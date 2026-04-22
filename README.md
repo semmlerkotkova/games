@@ -44,11 +44,11 @@ V Claude Code napiš `/hack` a uvidíš autocomplete se všemi příkazy.
 
 ## Úroveň účastníka
 
-Agenti se přizpůsobují tvé úrovni (junior / medior / senior). `/hack-check` se
+Agenti se přizpůsobují tvé úrovni (basic / advanced). `/hack-check` se
 tě na úroveň zeptá a uloží ji do `.participant-level`. Ostatní agenti si soubor
-přečtou a upraví chování — junior dostane víc hand-holdingu, senior víc challenge.
+přečtou a upraví chování — basic dostane víc hand-holdingu, advanced víc challenge.
 
-Default je `medior`. Úroveň kdykoliv přepíšeš otevřením `.participant-level`
+Default je `basic`. Úroveň kdykoliv přepíšeš otevřením `.participant-level`
 v editoru. Můžeš ji také změnit řečí — napiš agentovi "zjednoduš mi to" nebo
 "nemusíš mi to vysvětlovat" a přizpůsobí se.
 

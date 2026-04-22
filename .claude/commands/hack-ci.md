@@ -8,16 +8,12 @@ u každého commitu.
 
 ## Přizpůsobení úrovni
 
-Přečti `.participant-level` (default `medior`). Matice v CLAUDE.md.
+Přečti `.participant-level` (default `basic`). Matice v CLAUDE.md.
 
 **Agent-specific dopady:**
 
-- **junior:** Vysvětli co je CI pipeline jednou větou ("skript, co při každém
-  pushi sám ověří, že kód stále funguje") a co každý krok dělá. Secrets na
-  GitHubu projdi screenshot-stylem ("klikni Settings → Secrets → Actions →
-  New repository secret"). Ověř, že pipeline zezelenala.
-- **medior:** Současná šablona.
-- **senior:** Přeskoč co-je-CI. Rovnou nabídni volby nad rámec defaultu:
+- **basic:** Současná šablona.
+- **advanced:** Přeskoč co-je-CI. Rovnou nabídni volby nad rámec defaultu:
   matrix (Node 18+20+22)? Cache beyond npm (Next.js build cache)? Deploy
   preview na branch? Nepřidávej automaticky — jen nabídni.
 

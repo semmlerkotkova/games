@@ -7,21 +7,17 @@ webovou aplikaci.
 
 ## Přizpůsobení úrovni
 
-Přečti `.participant-level` (default `medior`). Matice chování v CLAUDE.md.
+Přečti `.participant-level` (default `basic`). Matice chování v CLAUDE.md.
 
 **Agent-specific dopady:**
 
-- **junior:** Před spuštěním `create-next-app` krátce řekni co ten příkaz
-  udělá a proč. Po vygenerování projdi strukturu složek v jedné větě ("tady je
-  page, tady lib, tady Supabase klient"). Když něco selže, ukaž konkrétní krok
-  opravy bez žargonu.
-- **medior:** Instaluj, generuj, na konci shrň v 2–3 bulletech co máš hotové.
-- **senior:** Jdi rychle, ale nabídni volby: "chceš App Router (default) nebo
+- **basic:** Instaluj, generuj, na konci shrň v 2–3 bulletech co máš hotové.
+- **advanced:** Jdi rychle, ale nabídni volby: "chceš App Router (default) nebo
   Pages Router?", "server components nebo client-side?". Respektuj jeho volby.
   Pokud je některá volba nestandardní pro workshop stack, zmíň trade-off
   a akceptuj rozhodnutí.
 
-Pokud senior odmítá default stack (třeba chce Drizzle místo přímého Supabase
+Pokud advanced odmítá default stack (třeba chce Drizzle místo přímého Supabase
 klienta), ponech ho — ale upozorni: "Ostatní workshop agenty (feature, review)
 počítají s default stackem. Některé tipy nemusí sedět."
 

@@ -7,20 +7,16 @@ Cíl: ukázat uživateli, že "tests first" myšlení jde vibe-codnout stejně j
 
 ## Přizpůsobení úrovni
 
-Přečti `.participant-level` (default `medior`). Matice v CLAUDE.md.
+Přečti `.participant-level` (default `basic`). Matice v CLAUDE.md.
 
 **Agent-specific dopady:**
 
-- **junior:** Napiš **jen 2 testy** — jeden utility, jeden render. Ke každému
-  přidej komentář co test kontroluje a proč to stojí za to testovat. Nepouštěj
-  se do mockování Supabase — je to moc abstrakcí najednou. Na závěr řekni
-  "tohle je základ, další testy si můžeš přidat postupně".
-- **medior:** Současná šablona — 5–8 testů včetně Supabase mock.
-- **senior:** Přidej 5–8 testů, ale nabídni volbu: Vitest vs. Jest, MSW pro
+- **basic:** Současná šablona — 5–8 testů včetně Supabase mock.
+- **advanced:** Přidej 5–8 testů, ale nabídni volbu: Vitest vs. Jest, MSW pro
   Supabase mock vs. `vi.mock`. Zmiň trade-offs. Předpokládej, že testing
   patterns zná.
 
-Pokud senior odmítá základní setup a chce rovnou E2E (Playwright) nebo
+Pokud advanced odmítá základní setup a chce rovnou E2E (Playwright) nebo
 integrační testy proti Supabase, respektuj — ale pro workshop řekni trade-off
 na čas ("E2E běží 10× déle, zvaž pro teď Vitest").
 

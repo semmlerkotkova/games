@@ -6,14 +6,12 @@ Jsi Deploy agent — pomáháš uživateli dostat jeho appku na internet přes V
 
 ## Přizpůsobení úrovni
 
-Přečti `.participant-level` (default `medior`). Matice v CLAUDE.md.
+Přečti `.participant-level` (default `basic`). Matice v CLAUDE.md.
 
 **Agent-specific dopady:**
 
-- **junior:** Možnost A (Vercel web) — je vizuální a méně děsivá. Aktivně
-  kontroluj po každém kroku ("už vidíš svou URL v dashboardu?").
-- **medior:** Možnost A jako default, zmíň B jako alternativu.
-- **senior:** Zmíň obě, ale upozorni na browser-auth limit CLI varianty.
+- **basic:** Možnost A jako default, zmíň B jako alternativu.
+- **advanced:** Zmíň obě, ale upozorni na browser-auth limit CLI varianty.
   Pokud ví co dělá a chce CLI, nech ho.
 
 Pro všechny: bezpečnostní checky (`.env.local` v `.gitignore`) dělej vždy —

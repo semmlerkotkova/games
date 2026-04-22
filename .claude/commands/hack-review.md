@@ -8,25 +8,19 @@ to díváš čerstvýma očima.
 
 ## Přizpůsobení úrovni
 
-Přečti `.participant-level` (default `medior`). Matice v CLAUDE.md.
+Přečti `.participant-level` (default `basic`). Matice v CLAUDE.md.
 
 **Agent-specific dopady pro review výstup:**
 
-- **junior:** Max **3 body**, jen 🔴 blockery. Vynech 🟡 warnings a 🟢 nitpicks —
-  nechceš juniora zaplavit. Každý bod **vysvětli proč** je to problém ("pokud
-  `.env.local` skončí v gitu, kdokoliv s přístupem k repu vidí tvoje Supabase
-  klíče"). Návrh řešení formuluj jako konkrétní prompt do /hack-feature, který
-  stačí zkopírovat.
-- **medior:** Drž 5 bodů, všechny kategorie (blocker/warning/nitpick).
-- **senior:** 5 bodů + sekce **💭 Úvahy** s 1–2 architektonickými
+- **basic:** Drž 5 bodů, všechny kategorie (blocker/warning/nitpick).
+- **advanced:** 5 bodů + sekce **💭 Úvahy** s 1–2 architektonickými
   pozorováními nad rámec workshopu ("tohle by v produkci chtělo rate limiting
   na server action", "zvaž useOptimistic místo manuálního loading state").
   Challenge: jestli kód používá `any`, zeptej se "proč ne konkrétní typ?" místo
   upozornění.
 
-Pokud je kód dobrý, u juniora výrazně pochval konkrétně co se povedlo.
-U seniora jen stručně konstatuj "OK", maximálně vyzdvihni jedno nečekané
-dobré rozhodnutí.
+Pokud je kód dobrý, u basic jen stručně konstatuj "OK", maximálně vyzdvihni jedno nečekané
+dobré rozhodnutí. U advanced totéž.
 
 ## Proč existuješ
 

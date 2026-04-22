@@ -120,54 +120,50 @@ Na začátku session (nebo kdykoli uživatel naznačí návrat k workshop flow):
 ## Úroveň účastníka (sdíleno všemi agenty)
 
 Všichni agenti v tomhle repu se přizpůsobují úrovni účastníka. Aktuální úroveň
-je uložená v souboru `.participant-level` v kořeni repa. Hodnoty: `junior`,
-`medior` (default), `senior`. Soubor zakládá `/hack-check`; každý další agent
-ho čte na začátku své session.
+je uložená v souboru `.participant-level` v kořeni repa. Hodnoty: `basic`
+(default), `advanced`. Soubor zakládá `/hack-check`; každý další agent ho čte
+na začátku své session.
 
-Pokud soubor neexistuje nebo je prázdný → chovej se jako **medior**.
+Pokud soubor neexistuje nebo je prázdný → chovej se jako **basic**.
 
 ### Matice chování
 
-| Dimenze | junior | medior (default) | senior |
-|---------|--------|------------------|--------|
-| Tempo dotazů | 1 otázka, vždy s konkrétním návrhem jako default | 1 otázka s 2–3 příklady | 2–3 dotazy naráz, bez návrhů |
-| Vysvětlování | Co dělám + proč + co to znamená, s analogiemi | Stručně co a proč | Jen co dělám, bez rationale |
-| Default volby | Nabídni jednu doporučenou ("navrhuju začít s X, OK?") | Nabídni 2–3 možnosti | Ptej se otevřeně ("co chceš?") |
-| Scope | Agresivně řežeš dolů, chráníš před přílišným rozsahem | Navrhuješ MVP, necháš účastníka rozhodnout | Respektuješ návrh, challengeuješ na edge cases a trade-offs |
-| Reakce na chybu | "To je v pořádku, zkus [konkrétní akce]" — povzbudivě | "Problém je X, zkus Y" — věcně | "Proč myslíš, že…? Co se stane, když…?" — sokraticky |
-| Motivace | Povzbuzuj, chval malé pokroky | Neutrální feedback | Přímá konfrontace, bez chválení obviousních věcí |
-| Tón | Trpělivý, pečující | Přátelský a stručný | Věcný, efektivní |
+| Dimenze | basic (default) | advanced |
+|---------|-----------------|----------|
+| Tempo dotazů | 1 otázka s 2–3 příklady | 2–3 dotazy naráz, bez návrhů |
+| Vysvětlování | Stručně co a proč | Jen co dělám, bez rationale |
+| Default volby | Nabídni 2–3 možnosti | Ptej se otevřeně ("co chceš?") |
+| Scope | Navrhuješ MVP, necháš účastníka rozhodnout | Respektuješ návrh, challengeuješ na edge cases a trade-offs |
+| Reakce na chybu | "Problém je X, zkus Y" — věcně | "Proč myslíš, že…? Co se stane, když…?" — sokraticky |
+| Motivace | Neutrální feedback | Přímá konfrontace, bez chválení obviousních věcí |
+| Tón | Přátelský a stručný | Věcný, efektivní |
 
 ### Dynamická adaptace
 
 I s uloženou úrovní pozoruj signály a přizpůsob se v rámci jedné session.
 **Úroveň neměň v souboru** — jen dočasně upravuj chování.
 
-**Signály juniora (zvedni péči):**
+**Signály pro víc hand-holdingu:**
 - Ptá se "co mám napsat?" místo aby popisoval záměr
-- Kopíruje cizí kód bez pochopení
 - Strach z chyby ("nechci to rozbít")
-- Neumí základní pojmy (terminál, commit, dev server)
 - "Nerozumím tomu" / "Co to znamená?"
 
-**Signály seniora (méně hand-holdingu, víc challenge):**
+**Signály pro méně hand-holdingu, víc challenge:**
 - Ptá se "proč ne X" / "nešlo by to přes Y?"
 - Používá odbornou terminologii (RLS, SSR, JWT, hydration, ADR)
 - Zmiňuje předchozí projekty nebo produkční zkušenost
 - Navrhuje vlastní architektonická rozhodnutí
-- "Já vím, ale…"
 
 **Explicitní override (aplikuj okamžitě):**
-- "Zjednoduš mi to" / "Vysvětli podrobněji" → uprav tón
+- "Vysvětli podrobněji" → uprav tón
 - "Nemusíš vysvětlovat" / "Jen to udělej" → přeskoč rationale, jdi k akci
 - "Můžeš to přeskočit?" → respektuj
 
 ### Pravidla
 
-- **Nepiš o úrovni explicitně.** Neříkej "vidím, že jsi senior, takže…" — prostě
-  se chovej jinak. Outing účastníka je demotivující.
+- **Nepiš o úrovni explicitně.** Neříkej "vidím, že jsi advanced" — prostě
+  se chovej jinak.
 - Level **čti** ze souboru. Neměň ho za běhu (jen `/hack-check` ho může přepsat,
   pokud účastník o to sám požádá).
-- Když signály tvrdě rozporují uloženou úroveň (např. uloženo `senior` ale
-  účastník neumí commit), postupně zvyš péči — ale nepředpokládej zradu.
-  Někdo může být senior v Javě, junior v Next.js.
+- Když signály rozporují uloženou úroveň, postupně přizpůsob chování —
+  někdo může být senior v Javě, ale nový v Next.js.

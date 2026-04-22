@@ -11,24 +11,20 @@ rovnou použít jako vstup pro vygenerování fungující appky.
 ## Přizpůsobení úrovni
 
 Přečti soubor `.participant-level` v kořeni repa. Pokud neexistuje nebo je
-prázdný → chovej se jako `medior`. Aplikuj matici z CLAUDE.md sekce "Úroveň
+prázdný → chovej se jako `basic`. Aplikuj matici z CLAUDE.md sekce "Úroveň
 účastníka".
 
 **Agent-specific dopady pro /hack-prd:**
 
-- **junior:** V kroku 1 (Problém) rovnou nabídni 3 konkrétní příklady a navrhni
-  jeden ("navrhuju začít s jednoduchým todo listem — je to malé a uvidíš celý flow").
-  Datový model navrhuj sám z jeho odpovědí, minimum otázek o sloupcích. Scope
-  cut je tvrdý — tlač na 1 tabulku, 3 akce.
-- **medior:** Držíš současnou šablonu (otázky s příklady, necháš volbu).
-- **senior:** Vynech kroky 1–3 jako samostatné otázky — místo toho řekni
+- **basic:** Držíš současnou šablonu (otázky s příklady, necháš volbu).
+- **advanced:** Vynech kroky 1–3 jako samostatné otázky — místo toho řekni
   "popiš mi v odstavci problém, uživatele a 3 hlavní akce, pak se vrhneme
   na datový model". V datovém modelu challenge: "máš jistotu, že category je
   separátní tabulka a ne enum?". Očekávej, že bude chtít `uuid` —
   zdůvodni proč pro workshop držíme INT IDs (čitelnější pro debug).
 
-Sleduj dynamické signály z CLAUDE.md — pokud "senior" začne tápat u SQL,
-spadni do medior módu bez komentáře.
+Sleduj dynamické signály z CLAUDE.md — pokud "advanced" začne tápat u SQL,
+spadni do basic módu bez komentáře.
 
 DŮLEŽITÉ: Stavíme RESPONZIVNÍ WEBOVOU aplikaci (Next.js + Tailwind), nikoli
 mobilní nativní app (iOS/Android). Pokud uživatel popíše něco, co zní jako
@@ -51,24 +47,12 @@ Pojďme tvůj nápad převést na webovou appku."
 
 Než se začneš ptát, řekni co tě čeká. Přizpůsob délku úrovni:
 
-**Junior:**
-"Než začneme cokoliv programovat, potřebujeme vědět CO stavíme. Projdeme
-spolu 5 kroků — ptám se, ty odpovídáš, a na konci budeš mít hotové zadání
-pro svou appku:
-1. Jaký problém řešíš
-2. Pro koho to je
-3. Co appka umí (3 hlavní věci)
-4. Co necháme na později
-5. Jak budou vypadat data v databázi — nemusíš tomu rozumět, navrhnu to za tebe
-
-Celé to zabere asi 10 minut. Pojďme na to!"
-
-**Medior:**
+**Basic:**
 "Projdeme spolu mini PRD — problém, uživatel, scope, datový model.
 Ptám se krok po kroku, na konci z toho vypadne zadání + SQL pro databázi.
 Zabere to 10 minut."
 
-**Senior:**
+**Advanced:**
 "Připravím PRD — problém, scope, datový model, SQL. Řekni mi co stavíš."
 
 ### 1. Problém
@@ -103,16 +87,10 @@ Zeptej se: "Souhlasíš s tímhle scope? Chceš něco přidat nebo ubrat?"
 
 Před návrhem tabulek vysvětli, o co jde — přizpůsob úrovni:
 
-**Junior:**
-"Teď přijde datový model — to znamená, jak budou vypadat data v databázi.
-Představ si to jako tabulku v Excelu: každá tabulka má sloupce (název, typ,
-popis) a řádky (jednotlivé záznamy). Navrhnu to za tebe podle toho, co jsi
-mi řekl — ty jen zkontroluj, jestli tam nic nechybí."
-
-**Medior:**
+**Basic:**
 "Teď navrhnu tabulky pro Supabase. Koukni, jestli sedí."
 
-**Senior:** (bez vysvětlení, rovnou navrhni)
+**Advanced:** (bez vysvětlení, rovnou navrhni)
 
 Na základě všeho výše navrhni tabulky a sloupce pro Supabase (PostgreSQL).
 Pro každou tabulku ukaž: název, sloupce (název, typ, popis).

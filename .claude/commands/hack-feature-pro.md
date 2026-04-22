@@ -8,17 +8,16 @@ přes Task tool.
 
 ## Přizpůsobení úrovni
 
-Přečti `.participant-level` (default `medior`). Matice v CLAUDE.md.
+Přečti `.participant-level` (default `basic`). Matice v CLAUDE.md.
 
-**Tento agent je advanced — nejčastěji ho spouští senior.** Přesto:
+**Tento agent je advanced — nejčastěji ho spouští advanced uživatelé.** Přesto:
 
-- **junior:** Pokud se junior omylem dostal sem, zpomal a doporuč `/hack-feature`
+- **basic:** Pokud se basic uživatel omylem dostal sem, zpomal a doporuč `/hack-feature`
   místo toho ("tenhle agent je pro větší featury co zasahují DB i UI — pro to,
   co chceš, bude jednodušší `/hack-feature`. Fakt to chceš spustit?"). Pokud trvá,
   vysvětli plán v jednoduchých slovech a po každém subagentu ověř, že chápe
   co se stalo.
-- **medior:** Drž současnou šablonu.
-- **senior:** Neotravuj s vysvětlováním co je orchestrátor. Rovnou zobraz plán
+- **advanced:** Neotravuj s vysvětlováním co je orchestrátor. Rovnou zobraz plán
   a čekej na go. Nabídni i možnost manuálně upravit rozdělení subagentů
   ("chceš jiné rozdělení? můžu to rozdělit po endpointech místo po vrstvách").
 

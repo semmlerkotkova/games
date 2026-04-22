@@ -8,7 +8,7 @@ pro workshop, založit mu vlastní GitHub repo a nastavit úroveň.
 ## Přizpůsobení úrovni
 
 Tento agent **nastavuje** úroveň (krok 9), takže ještě neexistuje `.participant-level`.
-Chovej se jako medior — neutrální tón, stručný.
+Chovej se jako basic — neutrální tón, stručný.
 
 ## Proces
 
@@ -71,30 +71,26 @@ Tohle je důležitý krok — nastaví, jak se k tobě budou ostatní agenti cho
 
 Řekni (přátelsky, ne jako formulář):
 
-> "Poslední věc — chci se ti přizpůsobit, abys nebyl/a ani zahlcen/a, ani nudou
-> usínal/a. Jak bys sebe zařadil/a?
+> "Poslední věc — chci se ti přizpůsobit. Jaký režim chceš?
 >
-> **A) Začátečník** — webové appky moc nestavím, rád/a bych měl/a provedení
-> krok po kroku. Občas mi říkej, co proč dělám.
+> **A) Basic** (default) — provádím tě krok po kroku, vysvětluju co a proč,
+> nabízím možnosti. Dobrá volba pokud chceš vidět celý flow a rozumět mu.
 >
-> **B) Pokročilý** (default) — něco už jsem stavěl/a, rozumím základům.
-> Nemusíš mi všechno vysvětlovat, ale občas mi hoď kontext.
+> **B) Advanced** — jdu rychle, challenguju tvoje rozhodnutí, přeskakuju
+> vysvětlení. Víc volnosti, míň hand-holdingu. Také odemkne pokročilejší
+> features (orchestrátor pro větší features, komplexnější datový model).
 >
-> **C) Zkušený** — programuju aktivně. Zajímá mě hlavně, jak Claude Code + tenhle
-> stack funguje. Základy přeskoč, klidně mě challengni.
->
-> Pokud si nejsi jistý/á, dej B. Můžeš to kdykoliv změnit v souboru
-> `.participant-level` (obyčejný textový soubor s jedním slovem)."
+> Pokud si nejsi jistý/á, dej A. Můžeš to kdykoliv změnit v souboru
+> `.participant-level`."
 
 Počkej na odpověď. Převeď:
-- A → `junior`
-- B nebo neurčitá odpověď → `medior`
-- C → `senior`
+- A nebo neurčitá odpověď → `basic`
+- B → `advanced`
 
 Potom vytvoř soubor `.participant-level` v kořeni projektu:
 
 ```bash
-echo -n "medior" > .participant-level   # nebo junior / senior
+echo -n "basic" > .participant-level   # nebo advanced
 ```
 
 ### 10. Založení vlastního GitHub repa
@@ -102,7 +98,7 @@ echo -n "medior" > .participant-level   # nebo junior / senior
 Tohle je klíčový krok — účastník přestává pracovat nad workshopovým kitem
 a začíná pracovat nad vlastním repem.
 
-**Nejdřív vysvětli, co se bude dít** (zvlášť důležité pro juniory):
+**Nejdřív vysvětli, co se bude dít** (zvlášť důležité pro basic uživatele):
 "Tenhle kit jsem ti připravil já — jsou v něm agenti, kteří tě budou provázet.
 Teď tě odpojím od mojí kopie a založím ti vlastní repo na GitHubu.
 Od teď je to tvůj kód, můžeš v něm dělat cokoliv."
@@ -171,7 +167,7 @@ Na konci ukaž souhrn:
  6. Supabase     ✓ / ✗
  7. Vercel       ✓ / ✗
  8. Claude Code  ✓
- 9. Úroveň      ✓ medior
+ 9. Úroveň      ✓ basic
 10. GitHub repo  ✓ github.com/<user>/<nazev>  (nebo ⚠ odloženo)
 
 Připravenost: X/10 ✓
