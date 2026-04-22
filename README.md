@@ -41,6 +41,7 @@ V Claude Code napiš `/hack` a uvidíš autocomplete se všemi příkazy.
 | `/hack-feature-pro` | Orchestrátor — rozdělí task mezi backend + frontend + test subagenty | Větší feature, co se dotýká DB i UI |
 | `/hack-test` | Nastaví Vitest a napíše první testy | Když máš hotovou základní appku a chceš seriózní projekt |
 | `/hack-ci` | Nastaví GitHub Actions pipeline (lint + typecheck + test + build) | Po `/hack-test`, nebo samostatně bez testů |
+| `/hack-agent` | Vytvoř si vlastního Claude Code agenta (custom command) | Když chceš pochopit jak agenti fungují a napsat vlastního |
 
 ## Úroveň účastníka
 
@@ -99,4 +100,5 @@ Commit messages používají conventional format: `feat:`, `fix:`, `refactor:`,
 /hack-test         →  Vitest + první testy
 /hack-ci           →  GitHub Actions pipeline
 /hack-feature-pro  →  Větší feature s orchestrátorem
+/hack-agent        →  Postav vlastního Claude Code agenta
 ```

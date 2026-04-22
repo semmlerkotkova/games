@@ -22,6 +22,11 @@ prázdný → chovej se jako `basic`. Aplikuj matici z CLAUDE.md sekce "Úroveň
   na datový model". V datovém modelu challenge: "máš jistotu, že category je
   separátní tabulka a ne enum?". Očekávej, že bude chtít `uuid` —
   zdůvodni proč pro workshop držíme INT IDs (čitelnější pro debug).
+  **Datový model:** u advanced neřež scope agresivně. Povol junction tabulky,
+  víc relací (many-to-many), computed columns, partial indexes — pokud to
+  účastník chce a umí obhájit. Místo "max 3 tabulky" řekni "kolik potřebuješ,
+  ale obhaj proč". Challenguj návrh na edge cases ("co když uživatel smaže
+  kategorii, co se stane s položkami?").
 
 Sleduj dynamické signály z CLAUDE.md — pokud "advanced" začne tápat u SQL,
 spadni do basic módu bez komentáře.
@@ -81,6 +86,11 @@ Na základě odpovědí navrhni, co je IN a co je OUT pro MVP:
 - IN: 3-5 věcí, které appka bude umět v první verzi
 - OUT: Věci, které jsou nice-to-have ale můžou počkat
 
+**AI-powered feature (nabídni jako možnost):**
+Pokud to dává smysl pro účastníkovu appku, zmíň: "Chceš do appky zabudovat AI?
+Třeba smart kategorizaci, generování popisků, sumarizaci, doporučování...
+Můžeme to dát do scope nebo na backlog." Netlač — je to nabídka, ne povinnost.
+
 Zeptej se: "Souhlasíš s tímhle scope? Chceš něco přidat nebo ubrat?"
 
 ### 5. Datový model
@@ -95,7 +105,12 @@ Před návrhem tabulek vysvětli, o co jde — přizpůsob úrovni:
 Na základě všeho výše navrhni tabulky a sloupce pro Supabase (PostgreSQL).
 Pro každou tabulku ukaž: název, sloupce (název, typ, popis).
 
-Drž to jednoduché — typicky 1-3 tabulky. Vždycky zahrň:
+**Basic:** Drž to jednoduché — typicky 1-3 tabulky.
+**Advanced:** Respektuj složitost, kterou účastník chce — junction tabulky,
+many-to-many relace, víc než 3 tabulky jsou OK pokud dávají smysl. Challenguj
+na trade-offs ("potřebuješ cascade delete nebo soft delete?").
+
+Vždycky zahrň:
 - `id` (integer, primary key, generated always as identity) — NE uuid, používáme INT pro jednoduchost
 - `created_at` (timestamptz, default now())
 - `user_id` (uuid, reference na auth.users — pro pozdější auth)
@@ -235,8 +250,9 @@ a já je tam vytvořím."
 - Celý proces by měl trvat 10-15 minut, ne víc.
 - Pokud uživatel tráví moc času na detailech, popohoň ho: "Tohle je MVP,
   nemusí to být dokonalé. Vylepšíme to potom."
-- Datový model drž maximálně jednoduše. Žádné junction tabulky, žádné
-  složité relace. Pro workshop stačí 1-3 tabulky s basic sloupci.
+- **Basic:** Datový model drž jednoduše — 1-3 tabulky, žádné junction tabulky.
+- **Advanced:** Respektuj složitost — junction tabulky, many-to-many, víc tabulek
+  jsou OK. Challenguj na edge cases místo řezání scope.
 - Používej integer ID (generated always as identity), NE uuid.
   Integer ID jsou čitelnější pro začátečníky (id=1, id=2...) a jednodušší na debug.
 - V konverzaci zobrazuj datový model jako ASCII tabulky (pro všechny úrovně).

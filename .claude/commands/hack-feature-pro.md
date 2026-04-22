@@ -56,6 +56,14 @@ Spustit? (y/n)
 
 Čekej na potvrzení. Pokud uživatel řekne ne, zeptej se co upravit.
 
+**Advanced varianta — nech účastníka navrhnout rozdělení:**
+Místo aby ses ptal "Spustit? (y/n)", zeptej se:
+"Jak bys tohle rozdělil mezi agenty? Já bych to udělal takhle: [tvůj plán].
+Chceš to jinak? Třeba po endpointech místo po vrstvách, nebo chceš víc/míň
+subagentů."
+
+Cílem je, aby advanced účastník přemýšlel o dekompozici — ne jen klikal "y".
+
 ### 3. Spusť subagenty
 
 Použij Task tool (obecného agenta — `general-purpose`) pro každou část. **Nespouštěj
@@ -78,8 +86,30 @@ Příklad rozdělení pro feature "filtrování úkolů podle kategorie":
 ### 4. Slep a ukaž
 Po doběhnutí subagentů:
 1. Krátce shrň co každý z nich udělal (2–3 bullety).
-2. Řekni uživateli jak feature otestovat ručně.
-3. Navrhni: "Až to otestuješ, spusť `/hack-review` pro druhý pár očí a pak `/hack-deploy`."
+2. Pokud se subagenti "nepotkali" (jiný název funkce, chybějící import), ukaž
+   co se stalo a proč: "Backend exportuje `getItems()`, ale frontend volá
+   `fetchItems()` — tohle je typický problém multi-agent systémů. Kontrakt
+   nebyl dost přesný." Oprav to a vysvětli lesson learned.
+3. Řekni uživateli jak feature otestovat ručně.
+4. Navrhni: "Až to otestuješ, spusť `/hack-review` pro druhý pár očí a pak `/hack-deploy`."
+
+### 5. Reflexe — co ses naučil (advanced)
+
+Pro advanced účastníky po dokončení feature shrň multi-agent principy:
+
+"Právě jsi viděl orchestrátora v akci. Pár věcí k zapamatování:
+
+1. **Kontrakt je klíč** — subagenti musí vědět jaké funkce, typy a importy
+   používají ostatní. Bez kontraktu se nepotkají.
+2. **Izolace souborů** — každý agent dostane whitelist souborů, aby si
+   nepřepisovali práci.
+3. **Sekvenční závislosti** — test agent běží až po backend + frontend,
+   protože potřebuje jejich výstup.
+4. **Debug = oprav kontrakt, ne celého agenta** — když se dva agenti nepotkají,
+   typicky stačí upřesnit zadání jednoho z nich."
+
+Tohle je opt-in — řekni to jen pokud účastník projevuje zájem o pochopení
+mechaniky (ptá se "proč to rozděluješ takhle?", "jak se domluvili?" atd.).
 
 ## Pravidla
 
@@ -98,3 +128,6 @@ Po doběhnutí subagentů:
 Tohle je rozdíl mezi "AI assistent" a "AI tým". Místo jednoho dlouhého promptu,
 co se ztratí, máš dispatcher + specialisty. Stejný princip používají velké
 agentní systémy v produkci — jen tady je to zmenšeno na 3 subagenty v jedné sessionu.
+
+**Navazující krok:** Pokud účastník po tomhle chce jít dál, doporuč `/hack-agent`
+— tam si napíše vlastního agenta od nuly a pochopí, jak commands fungují pod kapotou.

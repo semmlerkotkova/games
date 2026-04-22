@@ -49,6 +49,8 @@ Pokud uživatel neví a nemá issues, nabídni nápady na základě PRD:
 - Loading a error stavy
 - Validace formulářů
 - Autentizace (login/signup přes Supabase Auth)
+- **AI-powered feature** — zabudovat LLM do appky (smart kategorizace, generování
+  textu, sumarizace, doporučování). Viz recept níže.
 
 ### 3. Vytvoř feature branch
 
@@ -96,6 +98,72 @@ uvidíš odkaz přímo v PR na GitHubu. Tam si appku otestuješ ještě před me
 Další kroky:
 - `/hack-review` — nech druhou AI projít tvoje změny na PR
 - Až jsi spokojený: `gh pr merge --squash` a Vercel deployuje do produkce."
+
+## Recept: AI-powered feature
+
+Pokud účastník chce zabudovat AI do appky, postupuj takhle:
+
+### 1. API klíč
+Zeptej se: "Máš Groq API klíč? Pokud ne, zaregistruj se na https://console.groq.com
+(free, stačí GitHub login) a vygeneruj si klíč v API Keys sekci."
+
+### 2. Instalace a env
+```bash
+npm install groq-sdk
+```
+
+Přidej do `.env.local` (bez `NEXT_PUBLIC_` — klíč nesmí být na frontendu!):
+```
+GROQ_API_KEY=gsk_...
+```
+
+### 3. API Route Handler
+Vytvoř `src/app/api/ai/route.ts`:
+
+```typescript
+import Groq from "groq-sdk";
+import { NextRequest, NextResponse } from "next/server";
+
+const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
+
+export async function POST(req: NextRequest) {
+  const { prompt } = await req.json();
+
+  const completion = await groq.chat.completions.create({
+    messages: [{ role: "user", content: prompt }],
+    model: "llama-3.3-70b-versatile",
+    temperature: 0.5,
+    max_tokens: 500,
+  });
+
+  return NextResponse.json({
+    result: completion.choices[0]?.message?.content ?? "",
+  });
+}
+```
+
+### 4. Klientská komponenta
+Z UI zavolej `/api/ai` přes fetch:
+```typescript
+const res = await fetch("/api/ai", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ prompt: "Zkategorizuj tento úkol: ..." }),
+});
+const { result } = await res.json();
+```
+
+### 5. Příklady použití
+Přizpůsob prompt podle účastníkovy appky:
+- **Todo list:** "Navrhni 3 subtasky pro: [název úkolu]"
+- **Výdaje:** "Zkategorizuj tento výdaj: [popis]. Vrať jednu kategorii."
+- **Recepty:** "Navrhni alternativní ingredience pro: [ingredience]"
+- **CRM:** "Shrň tuhle poznámku do jedné věty: [text]"
+
+**Důležité:**
+- `GROQ_API_KEY` nesmí být `NEXT_PUBLIC_` — volání LLM musí jít přes server
+- Groq free tier je štědrý, ale přidej loading state a error handling
+- Přidej `GROQ_API_KEY` i na Vercel (Environment Variables) pokud chceš deploy
 
 ## Pravidla
 
