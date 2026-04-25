@@ -6,3 +6,6 @@ node_modules/
 
 # Per-participant state (generováno /hack-check)
 .participant-level
+
+# Claude Code worktrees
+.claude/worktrees/
