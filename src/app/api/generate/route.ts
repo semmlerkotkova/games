@@ -33,15 +33,14 @@ Odpověz ve formátu JSON:
 
 Odpověz pouze JSON, žádný jiný text.`
 
-  const response = await fetch('https://api.anthropic.com/v1/messages', {
+  const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'x-api-key': process.env.ANTHROPIC_API_KEY!,
-      'anthropic-version': '2023-06-01',
+      'Authorization': `Bearer ${process.env.GROQ_API_KEY}`,
     },
     body: JSON.stringify({
-      model: 'claude-haiku-4-5-20251001',
+      model: 'llama-3.1-8b-instant',
       max_tokens: 400,
       messages: [{ role: 'user', content: prompt }],
     }),
@@ -52,10 +51,12 @@ Odpověz pouze JSON, žádný jiný text.`
   }
 
   const data = await response.json()
-  const text = data.content[0].text
+  const text = data.choices[0].message.content
 
   try {
-    const game = JSON.parse(text)
+    const match = text.match(/\{[\s\S]*\}/)
+    if (!match) throw new Error('no json')
+    const game = JSON.parse(match[0])
     return NextResponse.json(game)
   } catch {
     return NextResponse.json({ error: 'Nepodařilo se zpracovat odpověď AI' }, { status: 500 })
